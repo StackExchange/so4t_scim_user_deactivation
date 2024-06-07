@@ -9,7 +9,7 @@ A SCIM API script for Stack Overflow for Teams that can automate the deactivatio
 
 ## Setup
 
-[Download](https://github.com/jklick-so/so4t_scim_user_deactivation/archive/refs/heads/main.zip) and unpack the contents of this repository
+[Download](https://github.com/StackExchange/so4t_scim_user_deactivation/archive/refs/heads/main.zip) and unpack the contents of this repository
 
 **Installing Dependencies**
 
@@ -28,7 +28,7 @@ To use the SCIM API, you'll first need to enable SCIM in the admin settings. Sec
 ## Usage
 
 Create a file named `users.csv` in the same directory as the script. 
-You can find a CSV template [here](https://github.com/jklick-so/so4t_scim_user_deactivation/blob/main/Templates/users.csv).
+You can find a CSV template [here](https://github.com/StackExchange/so4t_scim_user_deactivation/blob/main/Templates/users.csv).
 - The CSV shoud have a single column with no header row
 - Each row can be an email address or external ID
 
