@@ -41,6 +41,5 @@ In a terminal window, navigate to the directory where you unpacked the script. R
 > If API requests to the Stack Overflow for Teams server need to be made through a proxy, you can use the `--proxy` flag to specify the proxy URL. Example: `python3 so4t_tag_report.py --url "https://SUBDOMAIN.stackenterprise.co" --token "YOUR_SCIM_TOKEN" --proxy "PROXY.EXAMPLE.COM:PORTNUMBER"`
 
 ## Support, security, and legal
-Disclaimer: This script is designed for current Stack Overflow clients that need assistance with bulk API actions. 
 
 If you run into issues using the script, please open a support issue with Stack Overflow. You are also welcome to clone the script and change it to suit your needs. It is provided as-is, with no warranty or guarantee of any kind.
