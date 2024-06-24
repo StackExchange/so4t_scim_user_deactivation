@@ -1,9 +1,3 @@
-'''
-This Python script is a labor of love and has no formal support from Stack Overflow. 
-If you run into difficulties, reach out to the person who provided you with this script.
-Or open an issue here: https://github.com/jklick-so/so4t_scim_user_deactivation/issues
-'''
-
 # Standard Python libraries
 import argparse
 import json
@@ -20,7 +14,7 @@ def main():
         print("Please provide a CSV file with a list of users to delete. Exiting.")
         raise SystemExit
     
-    scim_client = ScimClient(args.token, args.url, args.proxy)
+    scim_client = ScimClient(args.token, args.url)
 
     # Get all users via API
     all_users = scim_client.get_all_users()
@@ -67,10 +61,10 @@ def get_args():
     #     help="A JSON file with a list of users to deactivate."
     # )
 
-    parser.add_argument('--proxy',
-        type=str,
-        help='Used in situations where a proxy is required for API calls. The '
-        'argument should be the proxy server address (e.g. proxy.example.com:8080).')
+    #parser.add_argument('--proxy',
+    #   type=str,
+    #    help='Used in situations where a proxy is required for API calls. The '
+    #    'argument should be the proxy server address (e.g. proxy.example.com:8080).')
 
     args = parser.parse_args()
 

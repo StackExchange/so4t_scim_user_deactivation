@@ -1,9 +1,3 @@
-'''
-This Python script is a labor of love and has no formal support from Stack Overflow. 
-If you run into difficulties, reach out to the person who provided you with this script.
-Or, open an issue here: https://github.com/jklick-so/so4t_scim_user_deactivation/issues
-'''
-
 # Open source libraries
 import requests
 
