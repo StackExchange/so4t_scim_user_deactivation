@@ -1,5 +1,5 @@
 # Stack Overflow for Teams SCIM-based User Deactivation
-A SCIM API script for Stack Overflow for Teams that can automate the deactivation of a list of specific users.
+A SCIM API script for Stack Overflow for Teams that can automate the Activation of a list of specific existing users.
 
 
 ## Requirements
@@ -32,7 +32,7 @@ You can find a CSV template [here](https://github.com/StackExchange/so4t_scim_us
 - The CSV should have a single column with no header row
 - Each row can be an email address or external ID
 
-The script will read the CSV and deactivate each user in the list. If the user is not found, the script will skip to the next user and print a message to the console.
+The script will read the CSV and Activate each user found in the list. If the user is not found, the script will skip to the next user and print a message to the console.
 
 In a terminal window, navigate to the directory where you unpacked the script. Run the script with the `--csv` flag, replacing the URL, token, and path to CSV file with your own:
 * For Basic and Business: `python3 so4t_scim_user_deactivation.py --url "https://stackoverflowteams.com/c/TEAM-NAME" --token "YOUR_SCIM_TOKEN" --csv users.csv`

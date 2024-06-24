@@ -11,7 +11,7 @@ def main():
     args = get_args()
 
     if not args.csv:
-        print("Please provide a CSV file with a list of users to delete. Exiting.")
+        print("Please provide a CSV file with a list of users to activate. Exiting.")
         raise SystemExit
     
     scim_client = ScimClient(args.token, args.url)
@@ -25,14 +25,14 @@ def main():
     for user_id in csv_users_to_deactivate:
         account_id = scim_user_lookup(all_users, user_id)
         if account_id: # if user_lookup returns None, skip this user
-            print(f"Deactivating user with ID {account_id}...")
-            scim_client.update_user(account_id, active=False)
+            print(f"Activating user with ID {account_id}...")
+            scim_client.update_user(account_id, active=True)
 
 
 def get_args():
 
     parser = argparse.ArgumentParser(
-        description="Delete users from Stack Overflow for Teams."
+        description="Activate existing users for Stack Overflow for Teams."
     )
 
     parser.add_argument(
