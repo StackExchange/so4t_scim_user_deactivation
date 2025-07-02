@@ -99,7 +99,8 @@ class ScimClient:
 
 
     def update_user(self, account_id, active=None, role=None):
-        # Update a user's active status or role via SCIM API
+        # Update a user's active status or role via SCIM API using PATCH
+        # PATCH is used instead of PUT to preserve existing fields like externalId
         # Role changes require an admin setting to allow SCIM to modify user roles
         # `role` can be one of the following: Registered, Moderator, Admin
         # if another role is passed, it will be ignored (and still report HTTP 200)
@@ -108,20 +109,39 @@ class ScimClient:
         valid_roles = ["Registered", "Moderator", "Admin"]
 
         scim_url = f"{self.scim_url}/{account_id}"
-        payload = {}
+        
+        # Build the PATCH payload according to SCIM 2.0 specification
+        operations = []
+        
         if active is not None:
-            payload['active'] = active
+            operations.append({
+                "op": "replace",
+                "path": "active",
+                "value": active
+            })
+            
         if role is not None:
             if role in valid_roles:
-                payload['userType'] = role
+                operations.append({
+                    "op": "replace", 
+                    "path": "userType",
+                    "value": role
+                })
             else:
                 print(f"Invalid role: {role}. Valid roles are: {valid_roles}")
                 return
 
+        payload = {
+            "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+            "Operations": operations
+        }
+
         # Add User-Agent to headers
         headers = self.headers.copy()
         headers['User-Agent'] = 'so4t_scim_user_deactivation/1.0 (http://your-app-url.com; your-contact@email.com)'
-        response = requests.put(scim_url, headers=headers, json=payload, proxies=self.proxies)
+        headers['Content-Type'] = 'application/scim+json'
+        
+        response = requests.patch(scim_url, headers=headers, json=payload, proxies=self.proxies)
 
         if response.status_code == 404:
             print(f"User with account ID {account_id} not found.")
