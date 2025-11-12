@@ -1,5 +1,5 @@
 '''
-This Python script is a working proof of concept example of using Stack Overflow APIs for SCIM User Deactivation. 
+This Python script is a working proof of concept example of using Stack Internal APIs for SCIM User Deactivation. 
 If you run into difficulties, please leave feedback in the Github Issues.
 '''
 
@@ -37,21 +37,21 @@ def main():
 def get_args():
 
     parser = argparse.ArgumentParser(
-        description="Deactivate existing users for Stack Overflow for Teams."
+        description="Deactivate existing users for Stack Internal."
     )
 
     parser.add_argument(
         "--token",
         type=str,
         required=True,
-        help="The SCIM token for your Stack Overflow for Teams site."
+        help="The SCIM token for your Stack Internal site."
     )
 
     parser.add_argument(
         "--url",
         type=str,
         required=True,
-        help="The base URL for your Stack Overflow for Teams site."
+        help="The base URL for your Stack Internal site."
     )
 
     parser.add_argument(
